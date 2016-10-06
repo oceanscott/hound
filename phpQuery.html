@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0040)http://www.wyzu.cn/2014/0519/94980.html/ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xml:lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+<TITLE>使用phpQuery采集网页的方法_PHP编程技术_网页教学基地</TITLE> 
+<META name="keywords" content="phpQuery,采集网页"> 
+<META name="description" content="phpQuery是一个基于PHP的服务端开源项目，它可以让PHP开发人员轻松处理DOM文档内容，比如获取某新闻网站的头"> 
+<META name="robots" content="all"> 
+<META name="author" content="www.wyzu.cn"> <LINK href="http://m.wyzu.cn/2014/0519/94980.html" 
+rel="alternate" media="only screen and(max-width: 640px)"> 
+<META name="Copyright" content="Copyright (c) 2007-2010 wyzu.cn"> <LINK href="phpQuery.files/main.css" 
+rel="stylesheet" type="text/css" media="screen"> <LINK href="phpQuery.files/css.css" 
+rel="stylesheet" type="text/css" media="screen"> 
+<SCRIPT src="phpQuery.files/runcode.js" type="text/javascript"></SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.17239"></HEAD> 
+<BODY>
+<DIV id="header"><A id="top"></A> 
+<DIV id="topnav">
+<DIV id="toptext"><STRONG><FONT 
+color="#ff0000">致力于网页设计制作教学:HTTP://WWW.WYZU.CN</FONT></STRONG></DIV>
+<UL id="topnavlist">
+  <LI><A title="网页教学基地" href="http://www.wyzu.cn/"><STRONG><FONT 
+  color="#ff0000">首页</FONT></STRONG></A></LI>
+  <LI><A title="Photoshop教程" 
+  href="http://www.wyzu.cn/data/ps/">Photoshop教程</A></LI>
+  <LI><A title="Flash教程" href="http://www.wyzu.cn/data/fljc/">Flash教程</A></LI>
+  <LI><A title="OFFICE教程" 
+  href="http://www.wyzu.cn/data/officejiaocheng/">OFFICE教程</A></LI>
+  <LI><A title="游戏攻略" href="http://www.wyzu.cn/data/youxigonglue/"><STRONG><FONT 
+  color="#ff0000">游戏攻略</FONT></STRONG></A></LI>
+  <LI><A title="SEO优化" href="http://www.wyzu.cn/data/seoh/">SEO优化</A></LI>
+  <LI><A title="CMS教程" href="http://www.wyzu.cn/data/cms/">CMS教程</A></LI>
+  <LI><A title="游戏名字大全" 
+  href="http://www.wyzu.cn/data/youximingzi/">游戏名字大全</A></LI></UL></DIV>
+<DIV class="top cbody">
+<DIV class="toplogo"><A title="网页教学基地首页" href="http://www.wyzu.cn/">网页教学基地</A> 
+</DIV>
+<DIV class="topbanner">
+<SCRIPT language="javascript" src="phpQuery.files/top.js" type="text/javascript"></SCRIPT>
+ </DIV>
+<DIV class="toplink">
+<SCRIPT language="javascript" src="phpQuery.files/topright.js" type="text/javascript"></SCRIPT>
+ </DIV>
+<DIV class="clear"></DIV></DIV>
+<DIV id="wyzunav"><A title="网页教学基地首页" href="http://www.wyzu.cn/">网站首页</A> <A 
+title="业界新闻" class="mainmenu" href="http://www.wyzu.cn/data/yjxw/" target="_self">业界新闻</A> 
+<A title="建站指南" class="mainmenu" href="http://www.wyzu.cn/data/jzzn/" target="_self">建站指南</A> 
+<A title="网页制作" class="mainmenu" href="http://www.wyzu.cn/data/wyzz/" target="_self">网页制作</A> 
+<A title="动画制作" class="mainmenu" href="http://www.wyzu.cn/data/dhzz/" target="_self">动画制作</A> 
+<A title="网页特效" class="mainmenu" href="http://www.wyzu.cn/data/wytx/" target="_self">网页特效</A> 
+<A title="网络编程" class="mainmenu" href="http://www.wyzu.cn/data/wlbc/" target="_self">网络编程</A> 
+<A title="网页素材" class="mainmenu" href="http://www.wyzu.cn/data/wysc/" target="_self">网页素材</A> 
+<A title="图形图象" class="mainmenu" href="http://www.wyzu.cn/data/txtx/" target="_self">图形图象</A> 
+<A title="网站推广" class="mainmenu" href="http://www.wyzu.cn/data/wztg/" target="_self">网站推广</A> 
+<A title="学习教程" class="mainmenu" href="http://www.wyzu.cn/data/xxjc/" target="_self">学习教程</A> 
+<A title="网络周边" class="mainmenu" href="http://www.wyzu.cn/data/zhoubian/" 
+target="_self">网络周边</A> <A title="站长工具" class="mainmenu" href="http://www.wyzu.cn/tools/" 
+target="_self">站长工具</A> <A title="HTML教程" class="mainmenu" href="http://www.wyzu.cn/html/" 
+target="_self">HTML教程</A> <A title="全能手册" class="mainmenu" href="http://www.wyzu.cn/code/" 
+target="_self">全能手册</A></DIV>
+<UL id="tophot">
+  <LI class="a"><STRONG>热门关键字：</STRONG></LI>
+  <LI class="b">　<A 
+  href="http://www.wyzu.cn/tag.php?tag=%CD%F8%D5%BE"><U>网站</U></A> 　<A href="http://www.wyzu.cn/tag.php?tag=MX"><U>MX</U></A> 
+  　<A 
+  href="http://www.wyzu.cn/tag.php?tag=%BF%CE%BC%FE%B1%B3%BE%B0%CD%BC%C6%AC"><U>课件背景图片</U></A> 
+  　<A 
+  href="http://www.wyzu.cn/tag.php?tag=%B6%AF%BB%AD%C3%C0%C5%AE%CD%BC%C6%AC"><U>动画美女图片</U></A> 
+  　<A 
+  href="http://www.wyzu.cn/tag.php?tag=%BF%A8%CD%A8%BB%AD%CD%BC%C6%AC"><U>卡通画图片</U></A> 
+  </LI>
+  <LI class="c">
+<SCRIPT language="javascript" src="phpQuery.files/searchh.js" type="text/javascript"></SCRIPT>
+   </LI></UL>
+<DIV class="clear"></DIV></DIV>
+<DIV class="ads1">
+<SCRIPT language="javascript" src="" type="text/javascript"></SCRIPT>
+</DIV>
+<DIV id="containertow">
+<DIV id="content">
+<DIV id="articlenav">当前位置：<A href="http://www.wyzu.cn/">首页</A> &gt;&gt; <A href="http://www.wyzu.cn/data/wlbc/">网络编程</A> 
+&gt;&gt; <A href="http://www.wyzu.cn/data/phpi/">PHP编程技术</A> &gt;&gt; </DIV>
+<DIV id="brand">
+<SCRIPT language="javascript" src="phpQuery.files/5.js" type="text/javascript"></SCRIPT>
+ </DIV>
+<DIV id="article">
+<DIV id="entry">
+<DIV id="entrytitle">
+<H1>使用phpQuery采集网页的方法</H1>
+<DIV id="entrymeta">来源：网页教学基地 <STRONG>时间</STRONG>:2014-05-19 
+09:02:01&nbsp;&nbsp;<STRONG>浏览次数</STRONG>:<SPAN id="hits">0</SPAN></DIV></DIV>
+<DIV class="clear"></DIV>
+<DIV id="entrybody">
+<DIV class="Ad">
+<SCRIPT language="javascript" src="phpQuery.files/newsea1.js" type="text/javascript"></SCRIPT>
+ </DIV>
+<DIV class="textzw">
+phpQuery是一个基于PHP的服务端开源项目，它可以让PHP开发人员轻松处理DOM文档内容，比如获取某新闻网站的头条信息。更有意思的是，它采用了jQuery的思想，你可以像使用jQuery一样处理页面内容，获取你想要的页面信息。<BR>采集头条<BR>先看一实例，现在我要采集新浪网国内新闻的头条，代码如下：<BR>
+<DIV class="codetitle"><SPAN style="cursor: pointer;" onclick="doCopy('code96732')"><U>复制代码</U></SPAN> 
+代码如下:</DIV>
+<DIV class="codebody" id="code96732"><BR>include 'phpQuery/phpQuery.php'; 
+<BR>phpQuery::newDocumentFile('http://www.jb51.net'); <BR>echo pq(".blkTop 
+h1:eq(0)")-&gt;html();<BR></DIV><BR>简单的三行代码，就可以获取头条内容。首先在程序中包含phpQuery.php核心程序，然后调用读取目标网页，最后输出对应标签下的内容。<BR>pq()是一个功能强大的方法，跟jQuery的$()如出一辙，jQuery的选择器基本上都能使用在phpQuery上，只要把“.”变成“-&gt;”。如上例中，pq(“.blkTop 
+h1:eq(0)”)抓取了页面class属性为blkTop的DIV元素，并找到该DIV内部的第一个h1标签，然后用html()方法获取h1标签里的内容（带html标签），也就是我们要获取的头条信息，如果使用text()方法，则只获取头条的文本内容。当然要使用好phpQuery，关键是要找对文档中对应内容的节点。<BR>采集文章列表<BR>下面再来看一个例子，获取helloweba.com网站的blog列表，请看代码：<BR>
+<DIV class="codetitle"><SPAN style="cursor: pointer;" onclick="doCopy('code88446')"><U>复制代码</U></SPAN> 
+代码如下:</DIV>
+<DIV class="codebody" id="code88446"><BR>include 'phpQuery/phpQuery.php'; 
+<BR>phpQuery::newDocumentFile('http://www.jb51.net'); <BR>$artlist = 
+pq(".blog_li"); <BR>foreach($artlist as $li){ <BR>&nbsp;&nbsp; echo 
+pq($li)-&gt;find('h2')-&gt;html().""; 
+<BR>}<BR></DIV><BR>通过循环列表中的DIV，找出文章标题并输出，就是这么简单。<BR>解析XML文档<BR>假设现在有一个这样的test.xml文档：<BR>
+<DIV class="codetitle"><SPAN style="cursor: pointer;" onclick="doCopy('code66420')"><U>复制代码</U></SPAN> 
+代码如下:</DIV>
+<DIV class="codebody" id="code66420"><BR>&lt;?xml version="1.0" 
+encoding="utf-8"?&gt; <BR>&lt;root&gt; <BR>&nbsp; &lt;contact&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;name&gt;张三&lt;/name&gt; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp; &lt;age&gt;22&lt;/age&gt; <BR>&nbsp; 
+&lt;/contact&gt; <BR>&nbsp; &lt;contact&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;name&gt;王五&lt;/name&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;age&gt;18&lt;/age&gt; <BR>&nbsp; &lt;/contact&gt; 
+<BR>&lt;/root&gt;<BR></DIV><BR>现在我要获取名字为张三的联系人的年龄，代码如下：<BR>
+<DIV class="codetitle"><SPAN style="cursor: pointer;" onclick="doCopy('code5941')"><U>复制代码</U></SPAN> 
+代码如下:</DIV>
+<DIV class="codebody" id="code5941"><BR>include 'phpQuery/phpQuery.php'; 
+<BR>phpQuery::newDocumentFile('test.xml'); <BR>echo pq('contact &gt; 
+age:eq(0)');<BR>结果输出：22<BR></DIV><BR>像jQuery一样，精准查找文档节点，输出节点下的内容，解析一个XML文档就是这么简单。现在你不必为采集网站内容而使用那些头疼的正则算法、内容替换等繁琐的代码了，有了phpQuery，一切就变得轻松多了。<BR>phpquery项目官网地址：http://code.google.com/p/phpquery/ 
+</DIV>
+<DIV id="keyword"><STRONG>关键词：</STRONG><A class="keyword" href="http://www.wyzu.cn/tag.php?tag=phpQuery">phpQuery</A><A 
+class="keyword" 
+href="http://www.wyzu.cn/tag.php?tag=%B2%C9%BC%AF%CD%F8%D2%B3">采集网页</A></DIV>
+<DIV class="ads2">
+<SCRIPT language="javascript" src="phpQuery.files/newse.js" type="text/javascript"></SCRIPT>
+</DIV>
+<SCRIPT type="text/javascript">
+document.body.oncopy = function () { setTimeout( function () { var text = clipboardData.getData("text"); if (text) { text = text + "本文来自：网页教学基地(www.wyzu.cn)原文链接："+location.href; clipboardData.setData("text", text); } }, 100 ) }
+</SCRIPT>
+</DIV>
+<DIV class="clear"></DIV>
+<DIV class="clear"></DIV>
+<DIV id="toollinks">
+<SCRIPT type="text/javascript">
+var clipBoardContent = document.URL;
+  function copyUserHomeToClipBoard()
+  {  
+  window.clipboardData.setData("Text",clipBoardContent);
+  alert("复制成功，请粘贴到你的QQ/MSN上推荐给你的好友!内容如下:" + clipBoardContent);
+  }
+</SCRIPT>
+ <A title="复制本文链接发给你QQ/MSN上的好友" href="javascript: copyUserHomeToClipBoard()" 
+rel="nofollow">复制链接发给好友</A><A href="http://www.wyzu.cn/2014/0519/94980.html/#top">返回顶部</A><A 
+title="加入到收藏夹" href="javascript:window.external.AddFavorite(document.location.href,'使用phpQuery采集网页的方法')">收藏本文</A><A 
+href="javascript:window.close()">关闭此页</A></DIV>
+<DIV class="clear"></DIV></DIV>
+<DIV id="otherentry"></DIV></DIV>
+<DIV id="relatedarticle">
+<DIV class="relatitle">最近相关</DIV>
+<UL></UL>
+<DIV class="clear"></DIV></DIV></DIV>
+<DIV id="rail">
+<DIV id="recommand">
+<UL>
+<SCRIPT language="JavaScript" src="phpQuery.files/3.js"></SCRIPT>
+   </UL>
+<DIV class="clear"></DIV></DIV>
+<DIV class="rightlist">
+<DIV class="titlebgr">阅读排行</DIV>
+<UL>
+  <LI><SPAN>[2014-06-13]</SPAN><A title="?￠D?é¨?è?t????μ???í???′ú??ê?ày" href="http://www.wyzu.cn/2014/0613/96639.html" 
+  target="_blank">?￠D?é¨?è?t????μ???í???...</A></LI>
+  <LI><SPAN>[2015-01-06]</SPAN><A title="php连接oracle数据库及查询数据的方法" href="http://www.wyzu.cn/2015/0106/106841.html" 
+  target="_blank">php连接oracle数据库及查询数据...</A></LI>
+  <LI><SPAN>[2015-08-07]</SPAN><A title="一个PHP实现的轻量级简单爬虫" href="http://www.wyzu.cn/2015/0807/110900.html" 
+  target="_blank">一个PHP实现的轻量级简单爬虫</A></LI>
+  <LI><SPAN>[2016-05-21]</SPAN><A title="分享微信扫码支付开发遇到问题及解决方案-附Ecshop微信支付插件" 
+  href="http://www.wyzu.cn/2016/0521/116256.html" 
+  target="_blank">分享微信扫码支付开发遇到问题...</A></LI>
+  <LI><SPAN>[2016-06-10]</SPAN><A title="PHP结合jQuery插件ajaxFileUpload实现异步上传文件实例" 
+  href="http://www.wyzu.cn/2016/0610/116870.html" 
+  target="_blank">PHP结合jQuery插件ajaxFileUpl...</A></LI>
+  <LI><SPAN>[2015-09-05]</SPAN><A title="帝国CMS留言板回复后发送EMAIL通知客户" href="http://www.wyzu.cn/2015/0905/111486.html" 
+  target="_blank">帝国CMS留言板回复后发送EMAIL...</A></LI>
+  <LI><SPAN>[2015-10-02]</SPAN><A title="使用Appcan客户端自动更新PHP版本号（全）" href="http://www.wyzu.cn/2015/1002/112092.html" 
+  target="_blank">使用Appcan客户端自动更新PHP版...</A></LI>
+  <LI><SPAN>[2015-09-18]</SPAN><A title="在Nginx上部署ThinkPHP项目教程" href="http://www.wyzu.cn/2015/0918/111758.html" 
+  target="_blank">在Nginx上部署ThinkPHP项目教程</A></LI>
+  <LI><SPAN>[2015-01-13]</SPAN><A title="推荐几个开源的微信开发项目" href="http://www.wyzu.cn/2015/0113/106994.html" 
+  target="_blank">推荐几个开源的微信开发项目</A></LI>
+  <LI><SPAN>[2016-03-07]</SPAN><A title="表单提交错误后返回内容消失问题的解决方法（PHP网站）" href="http://www.wyzu.cn/2016/0307/113649.html" 
+  target="_blank">表单提交错误后返回内容消失问...</A></LI></UL>
+<DIV class="clear"></DIV></DIV>
+<DIV class="ads3">
+<SCRIPT language="javascript" src="phpQuery.files/newsr1.js" type="text/javascript"></SCRIPT>
+</DIV>
+<DIV class="rightlist">
+<DIV class="titlebgr">推荐文章</DIV>
+<UL></UL>
+<DIV class="clear"></DIV></DIV>
+<DIV class="ads4">
+<SCRIPT language="javascript" src="" type="text/javascript"></SCRIPT>
+</DIV>
+<DIV class="rightlist">
+<DIV class="titlebgr">最新更新</DIV>
+<UL>
+  <LI><SPAN>[2016-06-11]</SPAN><A title="深入讲解PHP Session及如何保持其不过期的方法" href="http://www.wyzu.cn/2016/0611/116898.html" 
+  target="_blank">深入讲解PHP Session及如何保持...</A></LI>
+  <LI><SPAN>[2016-06-11]</SPAN><A title="php实现图片等比例缩放代码" href="http://www.wyzu.cn/2016/0611/116897.html" 
+  target="_blank">php实现图片等比例缩放代码</A></LI>
+  <LI><SPAN>[2016-06-11]</SPAN><A title="php实现读取和写入tab分割的文件" href="http://www.wyzu.cn/2016/0611/116895.html" 
+  target="_blank">php实现读取和写入tab分割的文件</A></LI>
+  <LI><SPAN>[2016-06-10]</SPAN><A title="PHP结合jQuery插件ajaxFileUpload实现异步上传文件实例" 
+  href="http://www.wyzu.cn/2016/0610/116870.html" 
+  target="_blank">PHP结合jQuery插件ajaxFileUpl...</A></LI>
+  <LI><SPAN>[2016-06-10]</SPAN><A title="php去除头尾空格的2种方法" href="http://www.wyzu.cn/2016/0610/116867.html" 
+  target="_blank">php去除头尾空格的2种方法</A></LI>
+  <LI><SPAN>[2016-06-10]</SPAN><A title="PHP查询快递信息的方法" href="http://www.wyzu.cn/2016/0610/116865.html" 
+  target="_blank">PHP查询快递信息的方法</A></LI>
+  <LI><SPAN>[2016-06-09]</SPAN><A title="jQuery+PHP发布的内容进行无刷新分页（Fckeditor）" 
+  href="http://www.wyzu.cn/2016/0609/116801.html" 
+  target="_blank">jQuery+PHP发布的内容进行无刷...</A></LI>
+  <LI><SPAN>[2016-06-09]</SPAN><A title="微信access_token的获取开发示例" href="http://www.wyzu.cn/2016/0609/116798.html" 
+  target="_blank">微信access_token的获取开发示例</A></LI>
+  <LI><SPAN>[2016-06-09]</SPAN><A title="PHP中require和include路径问题详解" href="http://www.wyzu.cn/2016/0609/116797.html" 
+  target="_blank">PHP中require和include路径问题...</A></LI>
+  <LI><SPAN>[2016-06-08]</SPAN><A title="浅析PHP中call user func()函数及如何使用call user func调用自定义函数" 
+  href="http://www.wyzu.cn/2016/0608/116773.html" target="_blank">浅析PHP中call 
+  user func()函数...</A></LI></UL>
+<DIV class="clear"></DIV></DIV>
+<DIV class="ads5">
+<SCRIPT language="javascript" src="" type="text/javascript"></SCRIPT>
+</DIV></DIV></DIV>
+<SCRIPT language="JavaScript" src="phpQuery.files/count.htm"></SCRIPT>
+ 
+<SCRIPT language="JavaScript" src="phpQuery.files/4.js"></SCRIPT>
+ 
+<DIV id="footer">
+<DIV id="footerinfo">
+<DIV id="footercontent"><A href="http://www.wyzu.cn/data/page/1.html">关于我们</A> - 
+<A href="http://www.wyzu.cn/data/page/2.html">联系方式</A> - <A href="http://www.wyzu.cn/data/page/3.html">版权声明</A> 
+- <A href="http://www.wyzu.cn/data/page/4.html">网站地图</A> - <A href="http://www.wyzu.cn/data/friendsite/">友情链接</A> 
+</DIV>
+<DIV id="footercopyrights"><SPAN>Copyright &copy; 2007-2010 www.wyzu.cn . All rights 
+reserved. </SPAN><A href="http://www.miibeian.gov.cn/">陕ICP备05014816号</A>
+<SCRIPT language="JavaScript" src="phpQuery.files/foote.js"></SCRIPT>
+</DIV></DIV></DIV></BODY></HTML>
