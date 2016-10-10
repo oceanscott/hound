@@ -1,46 +1,39 @@
 <?php
-require "phpQuery-onefile.php";
-phpQuery::newDocumentFileXHTML('phpQuery.html')->find('p'); 
-$ul = pq('ul'); 
-var_dump($ul);
-//phpQuery::newDocumentFile('http://www.wyzu.cn/2014/0519/94980.html/'); 
-//echo pq(".blkTop h1:eq(0)")->html();
-//$pq_obj_1 = phpQuery::newDocumentFileHTML("phpQuery.html");
-//phpQuery::newDocumentFileXHTML('http://www.wyzu.cn/2014/0519/94980.html/')->find('p'); 
-//$ul = pq('ul'); 
-//var_dump($str[1]);
-//$str[1] = pq('div.test',$pq_obj_1)->html();
-//var_dump($str[1]);
-//	phpQuery::newDocumentFile('http://www.jb51.net'); 
-//$artlist = pq(".blog_li"); 
-/*
-foreach($str[1] as $li){ 
-   echo pq($li)->find('h2')->html().""; 
-}
-*/
-/*
-// Load Mike Fisher's player page on thescore.com 
-	$ch = curl_init(); 
-	curl_setopt($ch, CURLOPT_URL, 'http://www.thescore.com/nhl/player_profiles/859-mike-fisher'); 
- 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
- 	$html = curl_exec($ch); 
- 	curl_close($ch); 
-  
- 	// Create phpQuery document with returned HTML 
- 	$doc = phpQuery::newDocument($html); 
-  
- 	// Create array to hold stats 
- 	$stats = array(); 
-  
- 	// Add stats from page to array 
- 	// Notice the CSS style selector 
- 	foreach($doc['#career_stats_regular table tr:nth-child(1) td'] as $td) 
- 	{ 
- 		$stats[] = pq($td)->html(); 
- 	} 
-  
- 	// Display stats 
- 	print_r($stats); 
-*/
 
+
+class hound{
+
+	public function getCurrentQuote()
+	{
+		require('phpQuery-onefile.php');
+		$url = "http://www.xe.com/currencytables/?from=XAU&date=2016-09-29"; 
+
+		$content = file_get_contents($url);
+
+		//$usdollar = substr($content ,  , $length )
+		//var_dump($content);
+		//var_dump($doc);
+		$doc = phpQuery::newDocumentHTML($content);
+
+		//var_dump(strpos($doc,'historicalRateTable'));
+		$temp_US = substr($doc, strpos($doc, 'US Dollar', strpos($doc, 'historicalRateTable-wrap'))+0, 100);
+		$GoldQuote['US'] = substr($temp_US, strpos($temp_US, "\">")+2 , strpos($temp_US, "<", strpos($temp_US, "\">")) - strpos($temp_US, "\">") - 2);
+		
+		$temp_JP = substr($doc, strpos($doc, 'Japanese Yen', strpos($doc, 'historicalRateTable-wrap'))+0, 100);
+
+		$GoldQuote['JP'] = substr($temp_JP, strpos($temp_JP, "\">")+2 , strpos($temp_JP, "<", strpos($temp_JP, "\">")) - strpos($temp_JP, "\">") - 2);
+
+		var_dump($GoldQuote['US']);
+
+		var_dump($GoldQuote['JP']);
+		//$usd = pq($doc)->find('US Dollar');
+		//<div class="historicalRateTable-wrap">
+		//var_dump($usd);
+		phpQuery::$documents = array();
+
+		//$article_title = pq('h2',$article)->text();
+		return $GoldQuote;
+		//var_dump($article);
+	}
+}
 ?>
